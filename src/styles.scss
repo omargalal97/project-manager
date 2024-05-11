@@ -12,7 +12,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$project-manager-primary: mat.define-palette(mat.$indigo-palette);
+$project-manager-primary: mat.define-palette(mat.$yellow-palette ,900);
 $project-manager-accent: mat.define-palette(
   mat.$pink-palette,
   A200,
@@ -63,6 +63,18 @@ $danger-color: #fa12409e;
 $border-style: 2px solid;
 
 // End Global style of the application
+//start input field 
+ 
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled){
+  background-color: transparent !important;
+}
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-lable{
+color: #fff;
+border-radius: 0.5rem;
+
+}
+// end input field style
+
 
 // Start Global Style of Auth Section
 .auth-section {
@@ -139,7 +151,7 @@ button {
 
     &:hover {
       background-color: $main-color;
-      color: #fff;
+      color: #fff 
     }
   }
 
