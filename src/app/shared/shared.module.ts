@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   declarations: [
     SidebarComponent,
@@ -13,7 +15,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   ],
   exports: [
     SidebarComponent,
-    NavbarComponent
+    NavbarComponent,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
