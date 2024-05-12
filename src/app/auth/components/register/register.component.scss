@@ -1,0 +1,18 @@
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled){
+  background-color: transparent !important;
+}
+::ng-deep  .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input{
+  color: #fff!important;
+}
+::ng-deep  .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-floating-label{
+  color: #ef9b28!important;
+}
+
+.primary{
+  width: 35%;
+}
+
+// style for image
+[_nghost-ng-c2040221903] {
+  background-color: transparent;
+}
