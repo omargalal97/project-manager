@@ -1,0 +1,31 @@
+section{
+    height: 100vh;
+    ul{
+          padding: 0px;
+
+        list-style: none;
+
+li{
+    padding: 0.5rem;
+
+    a{    
+
+        display: block;
+        text-decoration: none;
+        border-radius: 8px;
+        color: white;
+        padding: 0.3rem;
+        span{
+            // margin: 0px 5px;
+            padding: 0px 3px;
+        }
+    }
+}
+    }
+    .activeLink{
+        background-color: rgba(239,155,40, 0.3);
+        color: #ef9b28;
+
+    }
+
+}

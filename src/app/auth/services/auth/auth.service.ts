@@ -1,21 +1,69 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { IForget, IReset } from '../../models/auth';
 import { Observable } from 'rxjs';
+import { ILogin, ILoginResponse,IDecryptedToken,IUserDetails, IChangePass, IForget, IReset } from '../../models/auth';
+import { jwtDecode } from 'jwt-decode';
+import { FormGroup } from '@angular/forms';
 
+HttpClient
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
 
-constructor(private _httpclient:HttpClient) { }
+export class AuthService {
+  
+
+  role: string = ''; // Variable to store user role
+userName:string=''
+  constructor(private _HttpClient: HttpClient){ 
+  //to get data again after reloading page (refresh)
+
+    if (localStorage.getItem('userToken') !== null) {
+      this.getProfile();
+    }
+  }
+login(loginData: ILogin): Observable<ILoginResponse> {
+  return this._HttpClient.post<ILoginResponse>('Users/Login', loginData);
+}
+getProfile() {
+  let encoded: string | null = localStorage.getItem('userToken');
+  if (encoded != null) {
+    let decoded: IDecryptedToken = jwtDecode(encoded);
+    localStorage.setItem('role', decoded.userGroup);
+    localStorage.setItem('userName', decoded.userName);
+    this.getRole(); // Get user role
+  }
+  console.log(this.role);
+
+}
+
+// Function to get user role from localStorage
+getRole() {
+  if (localStorage.getItem('userToken') !== null && localStorage.getItem('role') !== null) {
+    this.role = localStorage.getItem('role') ?? '';
+  }  
+
+}
+getCurrentUser(): Observable<IUserDetails> {
+  return this._HttpClient.get<IUserDetails>('Users/CurrentUser');
+}
+
+changePass(data:IChangePass):Observable<any>{
+  return this._HttpClient.put('Users/ChangePassword',data );
+}
+
+register(data: FormData): Observable<any> {
+  return this._HttpClient.post('Users/Register', data);
+}
 
 forgetPassword(data:IForget):Observable<any>{
-return this._httpclient.post<IForget>('https://upskilling-egypt.com:3003/api/v1/Users/Reset/Request', data)
+return this._httpclient.post<IForget>('Users/Reset/Request', data)
 }
 
 resetPasssword(data:IReset):Observable<any>{
-  return this._httpclient.post<IForget>('https://upskilling-egypt.com:3003/api/v1/Users/Reset', data)
+  return this._httpclient.post<IForget>('Users/Reset', data)
   }
+
 
 }
