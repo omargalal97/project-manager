@@ -63,6 +63,18 @@ $danger-color: #fa12409e;
 $border-style: 2px solid;
 
 // End Global style of the application
+//start input field 
+ 
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled){
+  background-color: transparent !important;
+}
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-lable{
+color: #fff;
+border-radius: 0.5rem;
+
+}
+// end input field style
+
 
 // Start Global Style of Auth Section
 .auth-section {
@@ -111,6 +123,9 @@ $border-style: 2px solid;
   }
 }
 
+.bg-green{
+  background-color: $green-color;
+}
 button {
   padding: 0.8rem 1rem;
   font-size: 1.3rem;
@@ -139,7 +154,7 @@ button {
 
     &:hover {
       background-color: $main-color;
-      color: #fff;
+      color: #fff 
     }
   }
 
@@ -208,6 +223,7 @@ button {
       color: #fff;
     }
   }
+
 }
 
 // End Global Style of Auth Section
