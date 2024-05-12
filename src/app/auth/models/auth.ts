@@ -9,3 +9,10 @@ export namespace Auth {
     confirmPassword:string
   }
 }
+
+export interface IChangePass {
+    oldPassword: string,
+    newPassword: string,
+    confirmNewPassword: string
+}
+

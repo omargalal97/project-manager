@@ -12,6 +12,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
@@ -27,10 +28,10 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
   exports: [
     SidebarComponent,
     NavbarComponent,
+    ReactiveFormsModule
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
     NgxDropzoneModule
