@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { ILogin, ILoginResponse,IDecryptedToken,IUserDetails } from '../../models/auth';
+import { ILogin, ILoginResponse,IDecryptedToken,IUserDetails, IChangePass } from '../../models/auth';
 
 
 import { jwtDecode } from 'jwt-decode';
@@ -49,6 +49,15 @@ getCurrentUser(): Observable<IUserDetails> {
   return this._HttpClient.get<IUserDetails>('Users/CurrentUser');
 }
 
+
+
+changePass(data:IChangePass):Observable<any>{
+  return this._HttpClient.put('Users/ChangePassword',data );
+}
+
+register(data: FormData): Observable<any> {
+  return this._HttpClient.post('Users/Register', data);
+}
 
 
 }
