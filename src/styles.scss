@@ -123,6 +123,9 @@ border-radius: 0.5rem;
   }
 }
 
+.bg-green{
+  background-color: $green-color;
+}
 button {
   padding: 0.8rem 1rem;
   font-size: 1.3rem;
@@ -220,6 +223,7 @@ button {
       color: #fff;
     }
   }
+
 }
 
 // End Global Style of Auth Section

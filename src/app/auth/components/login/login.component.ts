@@ -19,7 +19,9 @@ export class LoginComponent implements OnInit {
     private _AuthService: AuthService, // AuthService for authentication
     private _ToastrService: ToastrService, // ToastrService for displaying toast messages
     private _Router: Router // Router for navigation
-  ) {}
+  ) {
+  
+  }
 
   ngOnInit(): void {
     this.userName = localStorage.getItem('userName') ?? ''
@@ -45,16 +47,11 @@ export class LoginComponent implements OnInit {
       next: (response) => {
         // Handle response from login API call
         localStorage.setItem('userToken', response.token); // Store user token in local storage
+        this._AuthService.getProfile()
       },
       error: (error: HttpErrorResponse) => this._ToastrService.error(error.error.message, 'Error'),
       complete: () => {
-        this._AuthService.getCurrentUser().subscribe({
-          next: (res) => {
-            this.userName = res.userName;
-          },
-          error: (error: HttpErrorResponse) => this._ToastrService.error(error.error.message, 'Error'),
-          complete: () => this._ToastrService.success(`Welcome back ${this.userName}`, 'Success')
-        })
+    
         this._Router.navigate(['/dashboard']);
       }
     });

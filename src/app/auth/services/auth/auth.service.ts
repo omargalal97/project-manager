@@ -15,8 +15,10 @@ export class AuthService {
   
 
   role: string = ''; // Variable to store user role
-
+userName:string=''
   constructor(private _HttpClient: HttpClient){ 
+  //to get data again after reloading page (refresh)
+
     if (localStorage.getItem('userToken') !== null) {
       this.getProfile();
     }
@@ -32,13 +34,16 @@ getProfile() {
     localStorage.setItem('userName', decoded.userName);
     this.getRole(); // Get user role
   }
+  console.log(this.role);
+
 }
 
 // Function to get user role from localStorage
 getRole() {
   if (localStorage.getItem('userToken') !== null && localStorage.getItem('role') !== null) {
     this.role = localStorage.getItem('role') ?? '';
-  }
+  }  
+
 }
 getCurrentUser(): Observable<IUserDetails> {
   return this._HttpClient.get<IUserDetails>('Users/CurrentUser');
@@ -46,26 +51,4 @@ getCurrentUser(): Observable<IUserDetails> {
 
 
 
-//   constructor(private _HttpClient:HttpClient) { }
-// ngOnInit(): void {
-//   if(localStorage.getItem('tokenOfUserr')!==null){
-//     this.tokenDecodeInfo()
-//   }
-// }
-// role : any = ''
-// tokenDecodeInfo(){
-//   let encoded:any = localStorage.getItem('tokenOfUserr')
-//   let decoded:decoded = jwtDecode(encoded)
-//   localStorage.setItem('userRole',decoded.userGroup)
-//   localStorage.setItem('userName',decoded.userName)
-//   this.getRole()
-// }
-// getRole(){
-//   if(localStorage.getItem('tokenOfUserr')!==null&&localStorage.getItem('userRole')!==null){
-//     this.role = localStorage.getItem('userRole')
-//   }
-// }
-// loginUser(data:FormGroup):Observable<any>{
-// return this._HttpClient.post('Users/Login',data)
-// }
 }

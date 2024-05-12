@@ -6,7 +6,6 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { AuthService } from './services/auth/auth.service';
-import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -17,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule,SharedModule,ReactiveFormsModule,HttpClientModule
+    AuthRoutingModule,SharedModule,HttpClientModule
   ],
   providers:[
     AuthService
